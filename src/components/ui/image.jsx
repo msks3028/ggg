@@ -1,0 +1,1 @@
+import * as React from "react";import {cn} from "@/lib/utils";export const Image=React.forwardRef(function Image({className,...props},ref){return <img ref={ref} className={cn("max-w-full",className)} {...props}/>});Image.displayName="Image";export default Image;

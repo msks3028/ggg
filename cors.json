@@ -1,0 +1,22 @@
+[
+  {
+    "origin": [
+      "http://localhost:5173",
+      "http://127.0.0.1:5173"
+    ],
+    "method": [
+      "GET",
+      "HEAD",
+      "POST",
+      "PUT",
+      "DELETE"
+    ],
+    "responseHeader": [
+      "Content-Type",
+      "Range",
+      "X-Goog-Upload-Status",
+      "X-Goog-Upload-URL"
+    ],
+    "maxAgeSeconds": 3600
+  }
+]

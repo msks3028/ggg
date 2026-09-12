@@ -1,0 +1,1 @@
+export function safeReturnTo(fallback="/"){try{const v=new URLSearchParams(window.location.search).get("returnTo");if(!v)return fallback;const u=new URL(v,window.location.origin);return u.origin===window.location.origin?`${u.pathname}${u.search}${u.hash}`:fallback}catch{return fallback}}

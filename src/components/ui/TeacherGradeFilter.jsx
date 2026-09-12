@@ -1,0 +1,9 @@
+import React from 'react';
+import {GraduationCap,ChevronLeft} from 'lucide-react';
+import {GRADES} from '@/lib/grades';
+export function getContentGrade(item,courses=[]){if(!item)return'';if(item.target_grade&&item.target_grade!=='all')return item.target_grade;if(item.course_id){const course=courses.find(c=>String(c.id)===String(item.course_id));if(course?.target_grade&&course.target_grade!=='all')return course.target_grade}return''}
+export function matchesTeacherGrade(item,selectedGrade,courses=[]){if(!selectedGrade||selectedGrade==='all')return true;return getContentGrade(item,courses)===selectedGrade}
+export default function TeacherGradeFilter({value,onChange,counts={},className=''}){return <div className={`mb-6 rounded-[22px] border border-slate-200 bg-white p-4 shadow-[0_8px_30px_rgba(16,42,67,.045)] ${className}`} dir="rtl">
+ <div className="mb-3 flex items-center gap-3"><span className="grid h-9 w-9 place-items-center rounded-xl bg-indigo-50 text-indigo-600"><GraduationCap className="h-4 w-4"/></span><div><div className="text-xs font-black text-slate-800">تصفية حسب الصف الدراسي</div><div className="text-[10px] text-slate-400">اختر صفًا لعرض المحتوى المرتبط به</div></div></div>
+ <div className="flex gap-2 overflow-x-auto pb-1">{[['all','كل الصفوف'],...GRADES.map(g=>[g,g])].map(([grade,label])=><button key={grade} type="button" onClick={()=>onChange(grade)} className={`shrink-0 rounded-xl px-4 py-2.5 text-[11px] font-black transition ${value===grade?'bg-indigo-600 text-white shadow-md shadow-indigo-200':'bg-[#f4f7fb] text-slate-600 hover:bg-indigo-50 hover:text-indigo-700'}`}>{label}{counts[grade]!=null?` (${counts[grade]})`:''}{value===grade&&<ChevronLeft className="mr-1 inline h-3 w-3"/>}</button>)}</div>
+ </div>}
